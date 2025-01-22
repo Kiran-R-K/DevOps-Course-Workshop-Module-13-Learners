@@ -27,7 +27,7 @@ def process_orders(app):
         payload = {
             "product": order.product,
             "customer": order.customer,
-            "date": order.date_placed.isoformat(),
+            "date": order.date_placed_local.isoformat(),
         }
 
         app.logger.info("Order info: date placed " + order.date_placed.isoformat())
