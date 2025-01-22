@@ -11,10 +11,10 @@ import logging
 
 app = Flask(__name__)
 app.config.from_object(Config)
-logging.basicConfig(level=logging.INFO)
 
 initialise_database(app)
 initialise_scheduled_jobs(app)
+logging.basicConfig(level=logging.INFO)
 
 
 @app.route("/")

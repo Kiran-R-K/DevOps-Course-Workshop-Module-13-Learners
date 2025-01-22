@@ -1,6 +1,7 @@
 from data.database import save_order, get_all_orders
 from products import create_product_download
 from apscheduler.schedulers.background import BackgroundScheduler
+from datetime import datetime, timedelta
 import requests
 
 
@@ -28,6 +29,10 @@ def process_orders(app):
             "customer": order.customer,
             "date": order.date_placed.isoformat(),
         }
+
+        app.logger.info(f'Payload info: date placed {payload.date}')
+
+        app.logger.info(f'DateTime of now: {datetime.now(tz=utc)}')
 
         response = requests.post(
             app.config["FINANCE_PACKAGE_URL"] + "/ProcessPayment",
