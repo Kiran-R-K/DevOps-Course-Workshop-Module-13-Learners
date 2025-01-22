@@ -34,6 +34,7 @@ def process_orders(app):
             json=payload
         )
 
+        #  checking the response for information
         app.logger.info("Response from endpoint: " + response.text)
 
         response.raise_for_status()
