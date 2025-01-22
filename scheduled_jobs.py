@@ -41,7 +41,11 @@ def process_orders(app):
         #  checking the response for information
         app.logger.info("Response from endpoint: " + response.text)
 
-        response.raise_for_status()
+        try {
+           response.raise_for_status()
+        } except {
+          app.logger.exception("Error processing order {id}".format(id = order.id))
+        }
 
         order.set_as_processed()
         save_order(order)
