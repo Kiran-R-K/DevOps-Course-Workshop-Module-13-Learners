@@ -30,9 +30,8 @@ def process_orders(app):
             "date": order.date_placed.isoformat(),
         }
 
-        app.logger.info("Payload info: date placed " + payload.date)
+        app.logger.info("Order info: date placed " + order.date_placed.isoformat())
 
-        app.logger.info("DateTime of now: " + datetime.now(tz=utc))
 
         response = requests.post(
             app.config["FINANCE_PACKAGE_URL"] + "/ProcessPayment",
